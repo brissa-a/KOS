@@ -7,7 +7,7 @@ SECTIONS
 	. =  0x100000 + SIZEOF_HEADERS;
 	.text :
 	{
-		*(.multiboot)
 		*(.text)
+		*(.multiboot)
 	}
 }

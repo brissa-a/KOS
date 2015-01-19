@@ -1,7 +1,5 @@
-
 #define MULTIBOOT_HEADER_MAGIC		0x1BADB002
 #define MULTIBOOT_HEADER_FLAGS		7
-#define MULTIBOOT_BOOTLOADER_MAGIC	0x2BADB002
 
 .section ".multiboot"
 multiboot_header:
@@ -14,4 +12,13 @@ multiboot_header:
 .global start, _start
 start:
 _start:
-	jmp start
+	pushl %ebx
+	pushl %eax
+	call k_main
+
+
+
+
+
+
+print:

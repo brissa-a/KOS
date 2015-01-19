@@ -4,8 +4,9 @@ CFLAGS =	-Wall \
 		-nostdlib -nostdinc -fno-builtin -fno-stack-protector \
 		-mno-mmx -mno-3dnow \
 
-OBJECTS = bootstrap.o \
-	  #main.o
+OBJECTS =	bootstrap.o \
+		main.o \
+		segmentation.o
 
 KERNEL_OBJ   = k.elf
 PWD := $(shell pwd)
