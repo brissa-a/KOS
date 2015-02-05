@@ -34,7 +34,16 @@
 #define EXCEPT_ALIGNEMENT_CHECK             17         // Yes (Zero)
 #define EXCEPT_MACHINE_CHECK                18         // No
 
+#define save_flags(flags) \
+  asm volatile("pushfl ; popl %0":"=g"(flags)::"memory")
+#define restore_flags(flags) \
+  asm volatile("push %0; popfl"::"g"(flags):"memory")
 
+#define disable_IRQs(flags)    \
+  ({ save_flags(flags); asm("cli\n"); })
+#define restore_IRQs(flags)    \
+  restore_flags(flags)
 
 int set_interrupt_handler(int idx, ui32_t addr);
 int interrupts_setup();
+int enable_irq(int idx);

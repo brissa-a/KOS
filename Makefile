@@ -10,7 +10,8 @@ OBJECTS =	bootstrap.o \
 		utils.o \
 		screen.o \
 		interrupt/init.o \
-		interrupt/timer.o
+		interrupt/timer.o \
+		interrupt/divide.o
 
 KERNEL_OBJ   = k.elf
 PWD := $(shell pwd)

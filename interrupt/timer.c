@@ -17,9 +17,15 @@ int timer_handler() {
 
 int timer_setup() {
 
+  ui32_t flags;
+  disable_IRQs(flags);
+  
   set_timer_frequency(KERNEL_TIMER_FREQUENCY);
   set_interrupt_handler(IRQ_IDT_BASE + IRQ_TIMER, (ui32_t)timer_handler);
+  enable_irq(IRQ_TIMER);
 
+  restore_IRQs(flags);
+  
   return 0;
 }
 

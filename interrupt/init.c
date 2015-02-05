@@ -87,9 +87,20 @@ int set_interrupt_handler(int idx, ui32_t addr) {
   return 0;
 }
 
+int enable_irq(int idx) {
+  if (idx < 8)
+    outb((inb(PIC_MASTER+1) | (1 << idx)), PIC_MASTER+1);
+  else
+    outb((inb(PIC_SLAVE+1) | (1 << (idx-8))), PIC_SLAVE+1);
+  return 0;
+}
+
 int interrupts_setup() {
   idt_setup();
   pic_setup();
+
+  //Setup CPU interrupts
+  divide_setup();
 
   //Setup hardware interrupts
   timer_setup();
