@@ -1,5 +1,7 @@
 #include "utils.h"
 #include "timer.h"
+#include "screen.h"
+#include "interrupt/init.h"
 
 #define I8254_MAX_FREQ 1193180
 
@@ -8,11 +10,16 @@
 #define I8254_TIMER2  0x42
 #define I8254_CONTROL 0x43
 
+int timer_handler() {
+  putstr("Hello\n");
+  return 0;
+}
 
 int timer_setup() {
 
   set_timer_frequency(KERNEL_TIMER_FREQUENCY);
-  
+  set_interrupt_handler(IRQ_IDT_BASE + IRQ_TIMER, (ui32_t)timer_handler);
+
   return 0;
 }
 

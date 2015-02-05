@@ -1,5 +1,6 @@
 #pragma once
 
+int timer_handler();
 int timer_setup();
 int set_timer_frequency(ui32_t);
 

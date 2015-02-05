@@ -89,10 +89,12 @@ int set_interrupt_handler(int idx, ui32_t addr) {
 
 int interrupts_setup() {
   idt_setup();
+  pic_setup();
 
   //Setup hardware interrupts
-  pic_setup();
   timer_setup();
-  
+
+  asm volatile ("sti\n"); //Enable interrupts
+
   return 0;
 }
