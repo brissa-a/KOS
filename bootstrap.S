@@ -17,8 +17,4 @@ _start:
 	call k_main
 
 
-
-
-
-
 print:
