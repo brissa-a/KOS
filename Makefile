@@ -34,6 +34,6 @@ $(KERNEL_OBJ): $(OBJECTS)
 	$(CC) -I$(PWD) -c $< $(CFLAGS) -o $@
 
 clean:
-	$(RM) *.img *.o mtoolsrc *~ menu.txt *.img *.elf *.bin *.map
+	$(RM) $(OBJECTS) *.img mtoolsrc *~ menu.txt *.img *.elf *.bin *.map
 
 re: clean all
