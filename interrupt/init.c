@@ -2,6 +2,7 @@
 #include "types.h"
 #include "utils.h"
 #include "segmentation.h"
+#include "timer.h"
 
 #define PIC_MASTER 0x20
 #define PIC_SLAVE 0xa0
@@ -88,9 +89,9 @@ int set_interrupt_handler(int idx, ui32_t addr) {
 
 int interrupts_setup() {
   idt_setup();
-  pic_setup();
 
   //Setup hardware interrupts
+  pic_setup();
   timer_setup();
   
   return 0;
