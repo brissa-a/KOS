@@ -1,15 +1,5 @@
-
-#define SEG_NULL  0 /* NULL segment, unused by the procesor */
-#define SEG_KCODE 1 /* Kernel code segment */
-#define SEG_KDATA 2 /* Kernel data segment */
-#define BUILD_SEGMENT_REG_VALUE(desc_privilege,in_ldt,seg_index) \
-  (  (((desc_privilege) & 0x3)  << 0) \
-   | (((in_ldt)?1:0)            << 2) \
-   | ((seg_index)               << 3) )
-
-typedef unsigned long int  ui32_t; /* 32b unsigned */
-typedef unsigned short int ui16_t; /* 16b unsigned */
-typedef unsigned char      ui8_t; /* 8b unsigned */
+#include "segmentation.h"
+#include "types.h"
 
 struct x86_segment_descriptor
 {

@@ -6,7 +6,11 @@ CFLAGS =	-Wall \
 
 OBJECTS =	bootstrap.o \
 		main.o \
-		segmentation.o
+		segmentation.o \
+		utils.o \
+		screen.o \
+		interrupt/init.o \
+		interrupt/timer.o
 
 KERNEL_OBJ   = k.elf
 PWD := $(shell pwd)
